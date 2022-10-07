@@ -5,15 +5,15 @@
    gather_facts: False
 
    vars:
-     ec2_name: SAP-test
-     keypair: DEV-SAP
-     instance_type: c5a.large
-     image: ami-06a2bd7590c2b50cc
+     ec2_name: 
+     keypair: 
+     instance_type: 
+     image: 
      count: 1
-     region: eu-south-1
-     IAM_role: AmazonSSMRoleForInstancesQuickSetup
-     security_group: sg-057b7dbf3ceadfaa8
-     subnet_id:  subnet-0f410a2b2aebd094e
+     region: 
+     IAM_role: 
+     security_group: 
+     subnet_id:  
 
    tasks:
 
