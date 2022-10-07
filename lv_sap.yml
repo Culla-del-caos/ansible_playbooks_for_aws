@@ -1,0 +1,46 @@
+---
+- name: Create logical volume lvs 
+  hosts: all
+  vars:
+    lvname: saplv1
+    vgname: sapvg1
+  tasks:
+    - name: "create {{ lvname }} with size of x GB"
+      lvol:
+        lv: "{{ lvname }}"
+        vg: "{{ vgname }}"
+        size: 'x'g
+      when:
+        - "ansible_lvm.vgs[vgname] is defined"
+        - "ansible_lvm.vgs[vgname].free_g | int >= x "
+
+    - name: "Print error message - no suff space available"
+      debug:
+        msg: No sufficient space available
+      when:
+        - "ansible_lvm.vgs[vgname] is defined"
+        - "ansible_lvm.vgs[vgname].free_g | int < x "
+
+    - name: "Print error message - vg does not exists"
+      debug:
+        msg: Volume group vms does not exist
+      when:
+        - "not ansible_lvm.vgs[vgname] is defined"
+
+    - name: Create directory data1 if does not exist
+      file:
+        path: /data1
+        state: directory
+        mode: '0755'
+
+    - name: format the xfs filesystem
+      filesystem:
+        fstype: xfs
+        dev: /dev/mapper/vgn-lvn
+
+    - name: mount the lv on /data1
+      mount:
+        path: /data1
+        src: /dev/sample-vg/sample-lv
+        fstype: xfs
+        state: mounted 
