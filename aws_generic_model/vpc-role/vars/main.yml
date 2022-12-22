@@ -1,0 +1,14 @@
+---
+# vars file for aws-vpc/tasks/main.yml
+
+aws_access_key: ""
+aws_secret_key: ""
+region: ""
+
+# VPC
+vpc_cidr: 
+vpc_name: ""
+
+# Subnet
+subnet_name: ""
+subnet_cidr: 

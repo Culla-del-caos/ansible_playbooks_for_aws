@@ -1,0 +1,9 @@
+ec2_name: 
+keypair: 
+instance_type: 
+image: 
+count: 1
+region: 
+IAM_role: 
+security_group: 
+subnet_id:

@@ -1,23 +1,4 @@
----
- - name:  provisioning EC2 instances
-   hosts: localhost
-   connection: local
-   gather_facts: False
-
-   vars:
-     ec2_name: 
-     keypair: 
-     instance_type: 
-     image: 
-     count: 1
-     region: 
-     IAM_role: 
-     security_group: 
-     subnet_id:  
-
-   tasks:
-
-    - name: launch specific number of multiple instances
+- name: launch specific number of multiple instances
       amazon.aws.ec2_instance:
         name: "{{ ec2_name }}"
         key_name: "{{ keypair }}"
@@ -27,10 +8,10 @@
         region: "{{ region }}"
         instance_role: "{{ IAM_role }}"
         network:
-          assign_public_ip: no
+          assign_public_ip: yes
           security_group: "{{ security_group }}"
           vpc_subnet_id: "{{ subnet_id }}"
         state: present
         tags:
-          map-migrated: d-server-03s9krfq3yewa5
+          name: 
         user_data: "{{ lookup('file', 'user_data.sh') }}"
