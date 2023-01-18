@@ -12,5 +12,3 @@ Over time I will add more.
 If you would like to contribute feel free to add new tasks and enhancements using Ansible modules, I will be sure to check and add them 
 
 Thank you
-
-Translated with www.DeepL.com/Translator (free version)
